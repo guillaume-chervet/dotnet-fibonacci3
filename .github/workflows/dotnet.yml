@@ -39,7 +39,7 @@ jobs:
       image_version: "0.0.1"
       image_build_args: ""
       image_context: .
-      image_file: "./src/Leornardo.Web/Dockerfile"
+      image_file: "./src/Leonardo.Web/Dockerfile"
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
