@@ -12,6 +12,7 @@ on:
 jobs:
   tags:
     runs-on: ubuntu-latest
+    permissions: write-all
     outputs:
       new_version: ${{ steps.tag.outputs.new_version }}
     steps:
