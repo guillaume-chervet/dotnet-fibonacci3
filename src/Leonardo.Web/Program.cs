@@ -8,4 +8,10 @@ app.MapGet("/", () => "Hello World! 3");
 app.MapGet("/Fibonacci", 
     async () => await Fibonacci.RunAsync(new []{"44", "43"}));
 
+app.Run(context =>
+{
+    context.Response.StatusCode = 404;
+    return Task.CompletedTask;
+});
+
 app.Run();
