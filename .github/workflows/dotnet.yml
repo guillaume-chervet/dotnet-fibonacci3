@@ -44,9 +44,14 @@ jobs:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   publish_docker:
-    needs: tags
+    needs: [tags, build_docker]
     runs-on: ubuntu-latest
     steps:
+    - name: azure login
+      uses: azure/login@v1
+      with:
+        # az ad sp create-for-rbac --name "azure-admin" --role contributor --scopes /subscriptions/<subscription-id> --sdk-auth
+        creds: ${{secrets.AZURE_CREDENTIALS}}
     - name: Deploy container
       run: |
         # https://learn.microsoft.com/en-us/cli/azure/container?view=azure-cli-latest#az-container-create()
