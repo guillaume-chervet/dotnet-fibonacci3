@@ -8,5 +8,6 @@ RUN dotnet publish "./src/Leonardo.Web/Leonardo.Web.csproj" -c Release -r linux-
 FROM mcr.microsoft.com/dotnet/runtime-deps:8.0 AS final
 WORKDIR /app
 COPY --from=build /publish .
-
+EXPOSE 5000
+ENV ASPNETCORE_URLS=http://*:5000
 ENTRYPOINT ["/app/Leonardo.Web"]
